@@ -17,6 +17,4 @@ Comment.create(
     (err) => (err ? handleError(err) : console.log('Created new document'))
   );
 
-
-
 module.exports = Comment;
