@@ -1,0 +1,17 @@
+[
+    {
+        "name": "mona lisa" ,
+        "image": "smile?",
+        "bio": "lady with a blurred background and a questionable smile" 
+    },
+    {
+        "name": "girl with the pearl earring" ,
+        "image": "earring" ,
+        "bio": "blonde lady with one large visible pearl earing" 
+    },
+    {
+        "name": "starry night" ,
+        "image": "swirl" ,
+        "bio": "an abstract depiction of a starry night" 
+    }
+]
