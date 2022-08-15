@@ -13,6 +13,11 @@ const resolvers = {
       }
       throw new AuthenticationError('You must be signed in');
     },
+    pieces: async () => {
+      return Piece.find().sort({ createdAt: -1 });
+    },
+    
+
   },
 
   Mutation: {

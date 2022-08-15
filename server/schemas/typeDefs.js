@@ -9,6 +9,21 @@ const typeDefs = gql`
     artstyle: String
   }
 
+  type Comment {
+    _id: ID
+    commentText: String
+    createdAt: String
+  }
+
+  type Piece {
+    _id: ID
+    name: String
+    image: String
+    bio: String
+    price: Number
+    createdAt: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -17,6 +32,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     me: User
+    pieces:[Piece]!
   }
 
   type Mutation {
