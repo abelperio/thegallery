@@ -5,6 +5,23 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    password: String
+    artstyle: String
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    createdAt: String
+  }
+
+  type Piece {
+    _id: ID
+    name: String
+    image: String
+    bio: String
+    price: Number
+    createdAt: String
   }
 
   type Auth {
@@ -15,6 +32,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     me: User
+    pieces:[Piece]!
   }
 
   type Mutation {

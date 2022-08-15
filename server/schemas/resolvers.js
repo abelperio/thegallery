@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Piece, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -13,6 +13,11 @@ const resolvers = {
       }
       throw new AuthenticationError('You must be signed in');
     },
+    pieces: async () => {
+      return Piece.find().sort({ createdAt: -1 });
+    },
+    
+
   },
 
   Mutation: {
