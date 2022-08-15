@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Piece, Comment } = require('../models');
+const { User, Piece } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -15,8 +15,7 @@ const resolvers = {
     },
     pieces: async () => {
       return Piece.find().sort({ createdAt: -1 });
-    },
-    
+    }
 
   },
 
@@ -42,6 +41,31 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addPiece: async (parent, { name, image, bio }) => {
+      return Piece.create({ name, image, bio });
+    },
+    addComment: async (parent, { pieceId, commentText }) => {
+      return Piece.findOneAndUpdate(
+        { _id: pieceId },
+        {
+          $addToSet: { comments: { commentText } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    removePiece: async (parent, { pieceId }) => {
+      return Piece.findOneAndDelete({ _id: pieceId });
+    },
+    removeComment: async (parent, { pieceId, commentId }) => {
+      return Piece.findOneAndUpdate(
+        { _id: pieceId },
+        { $pull: { comments: { _id: commentId } } },
+        { new: true }
+      );
     },
   },
 };
