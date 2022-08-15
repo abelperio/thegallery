@@ -9,18 +9,17 @@ const typeDefs = gql`
     artstyle: String
   }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    createdAt: String
-  }
-
   type Piece {
     _id: ID
     name: String
     image: String
     bio: String
-    price: Number
+    price: Float
+    createdAt: String
+    comments: [Comment]!
+  }
+  type Comment{
+    commentText: String
     createdAt: String
   }
 
@@ -38,6 +37,10 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!, artstyle: String!): Auth
     login(email: String!, password: String!): Auth
+    addPiece(name: String!, image: String!): Piece
+    addComment(pieceId: ID!, commentText: String!): Piece
+    removePiece(pieceId: ID!): Piece
+    removeComment(pieceId: ID!, commentId: ID!): Piece
   }
 `;
 
