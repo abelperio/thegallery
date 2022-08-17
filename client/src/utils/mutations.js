@@ -23,6 +23,76 @@ mutation Login($email: String!, $password: String!) {
       _id
       username
       email
+      password
+      artstyle
     }
   }
-}`
+}`;
+
+export const ADD_PIECE = gql`
+mutation AddPiece($name: String!, $image: String!) {
+  addPiece(name: $name, image: $image) {
+    _id
+    name
+    image
+    bio
+    price
+    createdAt
+    comments {
+      _id
+      commentText
+      createdAt
+    }
+  }
+}`;
+
+export const ADD_COMMENT = gql`
+mutation AddComment($pieceId: ID!, $commentText: String!) {
+  addComment(pieceId: $pieceId, commentText: $commentText) {
+    _id
+    name
+    image
+    bio
+    price
+    createdAt
+    comments {
+      _id
+      commentText
+      createdAt
+    }
+  }
+}`;
+
+export const REMOVE_PIECE = gql`
+mutation RemovePiece($pieceId: ID!) {
+  removePiece(pieceId: $pieceId) {
+    _id
+    name
+    image
+    bio
+    price
+    createdAt
+    comments {
+      _id
+      commentText
+      createdAt
+    }
+  }
+}`;
+
+export const REMOVE_COMMENT = gql`
+mutation RemoveComment($pieceId: ID!, $commentId: ID!) {
+  removeComment(pieceId: $pieceId, commentId: $commentId) {
+    _id
+    name
+    image
+    bio
+    price
+    createdAt
+    comments {
+      _id
+      commentText
+      createdAt
+    }
+  }
+}`;
