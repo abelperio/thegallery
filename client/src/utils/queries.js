@@ -6,6 +6,8 @@ query Me {
     _id
     username
     email
+    password
+    artstyle
   }
 }
 `;
@@ -31,7 +33,15 @@ query Piece {
     bio
     price
     createdAt
+    user {
+      _id
+      username
+      email
+      password
+      artstyle
+    }
     comments {
+      _id
       commentText
       createdAt
     }

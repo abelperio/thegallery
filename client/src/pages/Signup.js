@@ -11,6 +11,7 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
+    artstyle: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -73,6 +74,14 @@ const Signup = () => {
                   name="password"
                   type="password"
                   value={formState.password}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Your artstyle"
+                  name="artstyle"
+                  type="text"
+                  value={formState.artstyle}
                   onChange={handleChange}
                 />
                 <button
