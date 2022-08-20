@@ -9,6 +9,7 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
     <Nav>
       <Nav.Item>
@@ -16,13 +17,19 @@ const Header = () => {
           Home
         </Nav.Link>
       </Nav.Item>
-      <Nav.Item>
-        <Nav.Link as={Link} to="/profile">
-          Profile
-        </Nav.Link>
-      </Nav.Item>
+      
       {Auth.loggedIn() ? (
         <>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/profile">
+              Profile
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/feed">
+              Feed
+            </Nav.Link>
+          </Nav.Item>
           <Nav.Item>
             <Nav.Link onClick={logout}>
               Logout

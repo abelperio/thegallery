@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const User = require('./User');
 
 const pieceSchema = new mongoose.Schema ({
     name: {
@@ -14,7 +15,13 @@ const pieceSchema = new mongoose.Schema ({
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    comments:[
+    user: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
+    comments: [
       {
         commentText:{
           type: String, 

@@ -16,6 +16,7 @@ const typeDefs = gql`
     bio: String
     price: Float
     createdAt: String
+    user:[User]!
     comments: [Comment]!
   }
   type Comment{

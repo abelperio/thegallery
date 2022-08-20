@@ -1,9 +1,11 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { QUERY_ME } from '../utils/queries';
+import { QUERY_USER } from '../utils/queries';
+import { QUERY_PIECE } from '../utils/queries';
 
 const Profile = () => {
-    const {loading, data} = useQuery(QUERY_ME);
+    const {loading, data} = useQuery(QUERY_ME, QUERY_USER, QUERY_PIECE);
 
     if (loading) {
         return (
@@ -17,12 +19,13 @@ const Profile = () => {
 
     return (
         <>
-            <p>Profile Page</p>
-            Id: {profileData._id}
-            <br/>
-            Email: {profileData.email}
-            <br/>
+            <p>{profileData.username}'s Profile</p>
+            
             Username: {profileData.username}
+            <br/>
+            Art Style: {profileData.artstyle}
+            
+            
         </>
     );
 };
