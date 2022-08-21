@@ -10,7 +10,8 @@ import Profile from './pages/Profile';
 import NotFound from './pages/Notfound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Feed from './pages/Feed'
+import Feed from './pages/Feed';
+import Piece from './pages/Piece'
 
 import Header from './components/Header';
 
@@ -49,6 +50,10 @@ function App() {
             <Route 
               path="/" 
               element={<Home />}
+            />
+            <Route 
+              path="/piece" 
+              element={<Piece />}
             />
             <Route 
               path="/profile" 
