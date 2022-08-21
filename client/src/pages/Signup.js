@@ -17,7 +17,7 @@ const Signup = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    
     setFormState({
       ...formState,
       [name]: value,
@@ -32,6 +32,7 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
+      
 
       Auth.login(data.addUser.token);
     } catch (e) {

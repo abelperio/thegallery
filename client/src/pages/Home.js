@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
-        homepage
+        THEGALLERY
       </div>
     </main>
   );
