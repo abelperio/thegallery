@@ -19,6 +19,7 @@ const typeDefs = gql`
     user:[User]!
     comments: [Comment]!
   }
+
   type Comment{
     _id: ID
     commentText: String
@@ -34,6 +35,7 @@ const typeDefs = gql`
     users: [User]
     me: User
     pieces:[Piece]!
+    piece(pieceId: ID!): Piece
   }
 
   type Mutation {

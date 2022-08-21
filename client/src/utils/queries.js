@@ -46,5 +46,22 @@ query Piece {
       createdAt
     }
   }
+}`
+
+export const QUERY_ONE_PIECE= gql`
+query Piece($pieceId: ID!) {
+  piece(pieceId: $pieceId) {
+    _id
+    name
+    image
+    bio
+    price
+    createdAt
+    comments {
+      _id
+      commentText
+      createdAt
+    }
+  }
 }
 `;

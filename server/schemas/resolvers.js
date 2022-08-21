@@ -15,8 +15,10 @@ const resolvers = {
     },
     pieces: async () => {
       return Piece.find().sort({ createdAt: -1 });
+    },
+    piece: async (parent, { pieceId }) => {
+      return Piece.findOne({ _id: pieceId });
     }
-
   },
 
   Mutation: {

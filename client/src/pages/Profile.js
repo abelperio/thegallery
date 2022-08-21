@@ -22,11 +22,10 @@ const Profile = () => {
             
             Username: {profileData.username}
             <br/>
-            Email: {profileData.email}
-            <br/>
             Art Style: {profileData.artstyle}
             <br/>
-           
+            Contact: {profileData.email}
+            <br/>
         </>
         
     );

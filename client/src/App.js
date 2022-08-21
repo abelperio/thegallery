@@ -45,15 +45,11 @@ function App() {
           <Routes>
           <Route 
               path="/feed" 
-              element={<Feed />}
+              element={<Feed/>}
             />
             <Route 
               path="/" 
-              element={<Home />}
-            />
-            <Route 
-              path="/pieces/:pieceId" 
-              element={<Piece />}
+              element={<Home/>}
             />
             <Route 
               path="/profile" 
@@ -69,7 +65,11 @@ function App() {
             />
             <Route 
               path="*"
-              element={<NotFound />}
+              element={<NotFound/>}
+            />
+            <Route 
+              path="/piece/:pieceId" 
+              element={<Piece/>}
             />
           </Routes>
         </Container>

@@ -23,7 +23,7 @@ const PieceList = ({ pieces, title }) => {
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/pieces/${piece._id}`}
+              to={`/piece/${piece._id}`}
             >
               Take a closer look!
             </Link>
