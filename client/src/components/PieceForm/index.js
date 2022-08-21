@@ -8,7 +8,6 @@ const PieceForm = () => {
       name: '',
       image: '',
       bio: '',
-      price: '',
     });
     const [characterCount, setCharacterCount] = useState(0);
   
@@ -78,7 +77,7 @@ const PieceForm = () => {
               <input
                 art="bio"
                 placeholder="describe"
-                value={formState.image}
+                value={formState.bio}
                 className="form-input w-100"
                 onChange={handleChange}
               />
