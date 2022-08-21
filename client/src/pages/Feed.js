@@ -1,24 +1,37 @@
-// import React from 'react';
-// import { useQuery } from '@apollo/client';
+import React from 'react';
+import { useQuery } from '@apollo/client';
 
-// import { QUERY_PIECE } from '../utils/queries';
+import PieceList from '../components/PieceList';
+import PieceForm from '../components/PieceForm';
 
-// const Feed = () => {
-//   const { loading, data } = useQuery (QUERY_PIECE)
-//   const pieces = data?.pieces || []
+import { QUERY_PIECE } from '../utils/queries';
 
-//   return (
-//     <main>
-//       <div className="feed">
-//         <div className="add art">
-//           {loading ? (
-//             <div>Loading...</div>
-//           ) : (
-//             <div>Fill in with artwork</div>
-//           )}
-//         </div>
-//       </div>
-//     </main>
-//   );
-// };
-// export default Feed;
+const Feed = () => {
+  const { loading, data } = useQuery(QUERY_PIECE);
+  const pieces = data?.pieces || [];
+
+  return (
+    <main>
+      <div className="flex-row justify-center">
+        <div
+          className="col-12 col-md-10 mb-3 p-3"
+          style={{ border: '1px dotted #1a1a1a' }}
+        >
+          <PieceForm />
+        </div>
+        <div className="col-12 col-md-8 mb-3">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <PieceList
+              pieces={pieces}
+              title="For Browsing"
+            />
+          )}
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default Feed;

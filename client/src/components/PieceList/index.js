@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-
-const PieceList = ({pieces, title }) => {
+const PieceList = ({ pieces, title }) => {
   if (!pieces.length) {
-    return <h3>No Pieces Yet</h3>;
+    return <h3>No Art Yet</h3>;
   }
 
   return (
@@ -11,19 +11,22 @@ const PieceList = ({pieces, title }) => {
       <h3>{title}</h3>
       {pieces &&
         pieces.map((piece) => (
-          <div key={piece._id} className="pieceid">
-            <h4 className="title">
-              {piece.user.username} <br />
+          <div key={piece._id} className="card mb-3">
+            <h4 className="card-header bg-primary text-light p-2 m-0">
+              {piece.name} <br />
               <span style={{ fontSize: '1rem' }}>
-                created {piece.name}
+                posted: {piece.createdAt}
               </span>
             </h4>
-            <div className="image">
-              <p>{piece.image}</p>
-            </div>
-            <div className="body">
+            <div className="card-body bg-light p-2">
               <p>{piece.bio}</p>
             </div>
+            <Link
+              className="btn btn-primary btn-block btn-squared"
+              to={`/pieces/${piece._id}`}
+            >
+              Take a closer look!
+            </Link>
           </div>
         ))}
     </div>
