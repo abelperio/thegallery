@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -45,15 +45,11 @@ function App() {
           <Routes>
           <Route 
               path="/feed" 
-              element={<Feed />}
+              element={<Feed/>}
             />
             <Route 
               path="/" 
-              element={<Home />}
-            />
-            <Route 
-              path="/piece" 
-              element={<Piece />}
+              element={<Home/>}
             />
             <Route 
               path="/profile" 
@@ -69,7 +65,11 @@ function App() {
             />
             <Route 
               path="*"
-              element={<NotFound />}
+              element={<NotFound/>}
+            />
+            <Route 
+              path="/piece/:pieceId" 
+              element={<Piece/>}
             />
           </Routes>
         </Container>

@@ -1,13 +1,10 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { QUERY_ME } from '../utils/queries';
-import { QUERY_USER } from '../utils/queries';
-import { QUERY_PIECE } from '../utils/queries';
-// import PieceList from '../components/PieceList';
-import PieceForm from '../components/PieceForm';
+
 
 const Profile = () => {
-    const {loading, data} = useQuery(QUERY_ME, QUERY_USER, QUERY_PIECE);
+    const {loading, data} = useQuery(QUERY_ME);
 
     if (loading) {
         return (
@@ -18,8 +15,7 @@ const Profile = () => {
     }
 
     const profileData = data?.me || {}
-    const pieceData = data?.pieces || {}
-
+   
     return (
         <>
             <p>{profileData.username}'s Profile</p>
@@ -27,11 +23,9 @@ const Profile = () => {
             Username: {profileData.username}
             <br/>
             Art Style: {profileData.artstyle}
-            <br></br>
-            Image: {pieceData.image}
-                <div className="pieceform">
-                    <PieceForm/>
-                </div>
+            <br/>
+            Contact: {profileData.email}
+            <br/>
         </>
         
     );
