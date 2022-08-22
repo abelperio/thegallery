@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
 
-import { ADD_PIECE } from '../../utils/mutations';
-import { QUERY_PIECE } from '../../utils/queries';
+import { ADD_PIECE } from "../../utils/mutations";
+import { QUERY_PIECE } from "../../utils/queries";
+// import ImageUploader from "../ImageUploader";
 
 const PieceForm = () => {
   const [formState, setFormState] = useState({
-    name: '',
-    image: '',
-    bio: '',
+    name: "",
+    image: "",
+    bio: "",
   });
+
+  // const [selectedImage, setSelectedImage] = useState(null);
+
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPiece, { error }] = useMutation(ADD_PIECE, {
@@ -36,22 +40,24 @@ const PieceForm = () => {
       });
 
       setFormState({
-        name: '',
-        image: '',
-        bio: '',
+        name: "",
+        image: "",
+        bio: "",
       });
+
     } catch (err) {
       console.error(err);
     }
   };
 
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'name' && value.length <= 280) {
+    if (name === "name" && value.length <= 280) {
       setFormState({ ...formState, [name]: value });
       setCharacterCount(value.length);
-    } else if (name !== 'name') {
+    } else if (name !== "name") {
       setFormState({ ...formState, [name]: value });
     }
   };
@@ -62,7 +68,7 @@ const PieceForm = () => {
 
       <p
         className={`m-0 ${
-          characterCount === 280 || error ? 'text-danger' : ''
+          characterCount === 280 || error ? "text-danger" : ""
         }`}
       >
         Character Count: {characterCount}/280
@@ -78,11 +84,11 @@ const PieceForm = () => {
             placeholder="title"
             value={formState.name}
             className="form-input w-100"
-            style={{ lineHeight: '1.5' }}
+            style={{ lineHeight: "1.5" }}
             onChange={handleChange}
           ></textarea>
         </div>
-        <div className="col-12 col-lg-9">
+        <div className="col-12">
           <input
             name="image"
             placeholder="artist"
@@ -91,7 +97,7 @@ const PieceForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="col-12 col-lg-9">
+        <div className="col-12">
           <input
             name="bio"
             placeholder="description"
@@ -100,7 +106,13 @@ const PieceForm = () => {
             onChange={handleChange}
           />
         </div>
-
+        {/* <div className="col-12">
+          <input
+            type="image"
+            value={selectedImage}
+            onChange={(e) => setSelectedImage(e.target.files[0])}
+          />
+        </div> */}
         <div className="col-12 col-lg-3">
           <button className="btn btn-primary btn-block py-3" type="submit">
             Add to feed
