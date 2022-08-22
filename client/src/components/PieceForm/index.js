@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_PIECE } from '../../utils/mutations';
 import { QUERY_PIECE } from '../../utils/queries';
+import FileUploader from '../FileUploader';
 
 const PieceForm = () => {
   const [formState, setFormState] = useState({
@@ -10,6 +11,22 @@ const PieceForm = () => {
     image: '',
     bio: '',
   });
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const submitForm = () => {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("file", selectedFile);
+    
+    axios
+    .post(UPLOAD_URL, formData)
+    .then((res) => {
+      alert("File Upload success");
+    })
+    .catch((err) => alert("File Upload Error"));
+  };  
+
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPiece, { error }] = useMutation(ADD_PIECE, {
@@ -82,7 +99,7 @@ const PieceForm = () => {
             onChange={handleChange}
           ></textarea>
         </div>
-        <div className="col-12 col-lg-9">
+        <div className="col-12">
           <input
             name="image"
             placeholder="artist"
@@ -91,7 +108,7 @@ const PieceForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="col-12 col-lg-9">
+        <div className="col-12">
           <input
             name="bio"
             placeholder="description"
@@ -100,7 +117,16 @@ const PieceForm = () => {
             onChange={handleChange}
           />
         </div>
-
+        <div className="col-12">
+          <input 
+          type="file"
+          value={selectedFile}
+          onChange={(e) => setSelectedFile(e.target.files[0])}
+          />
+          <FileUploader
+          />
+          <button onClick={submitForm}>Submit</button>
+        </div>
         <div className="col-12 col-lg-3">
           <button className="btn btn-primary btn-block py-3" type="submit">
             Add to feed
